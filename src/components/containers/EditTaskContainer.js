@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 
-import { fetchCourseThunk, editCourseThunk, fetchAllInstructorsThunk  } from '../../store/thunks';
+import { fetchTaskThunk, editTaskThunk, fetchAllInstructorsThunk  } from '../../store/thunks';
 
 
 /*
@@ -38,7 +38,7 @@ functionality of the buttons controlling that portion of the UI.
 
 */
 
-class EditCourseContainer extends Component {
+class EditTaskContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -53,12 +53,12 @@ class EditCourseContainer extends Component {
 
     componentDidMount() {
         //getting course ID from url
-        this.props.fetchCourse(this.props.match.params.id);
+        this.props.fetchTask(this.props.match.params.id);
         this.props.fetchInstructors();
         this.setState({
-            title: this.props.course.title, 
-            timeslot: this.props.course.timeslot,
-            instructorId: this.props.course.instructorId, 
+            title: this.props.task.title, 
+            timeslot: this.props.task.timeslot,
+            instructorId: this.props.task.instructorId, 
         });
       }
 
@@ -90,18 +90,18 @@ class EditCourseContainer extends Component {
         }
 
         //get new info for course from form input
-        let course = {
-            id: this.props.course.id,
+        let task = {
+            id: this.props.task.id,
             title: this.state.title,
             timeslot: this.state.timeslot,
             instructorId: this.state.instructorId
         };
         
-        this.props.editCourse(course);
+        this.props.editTask(task);
 
         this.setState({
           redirect: true, 
-          redirectId: this.props.course.id
+          redirectId: this.props.task.id
         });
 
     }
@@ -112,30 +112,30 @@ class EditCourseContainer extends Component {
     }
 
     render() {
-        let { course, allInstructors, editCourse, fetchCourse} = this.props;
-        let assignedInstructor = course.instructorId;
+        let { task, allInstructors, editTask, fetchTask} = this.props;
+        let assignedInstructor = task.instructorId;
 
         let otherInstructors = allInstructors.filter(instructor => instructor.id!==assignedInstructor);
       
         //go to single course view of the edited course
         if(this.state.redirect) {
-          return (<Redirect to={`/course/${this.state.redirectId}`}/>)
+          return (<Redirect to={`/task/${this.state.redirectId}`}/>)
         }
 
         return (
         <div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => this.handleSubmit(e)}>
             <label style= {{color:'#11153e', fontWeight: 'bold'}}>Title: </label>
-            <input type="text" name="title" value={this.state.title || ''} placeholder={course.title} onChange ={(e) => this.handleChange(e)}/>
+            <input type="text" name="title" value={this.state.title || ''} placeholder={task.title} onChange ={(e) => this.handleChange(e)}/>
             <br/>
 
             <label style={{color:'#11153e', fontWeight: 'bold'}}>Timeslot: </label>
-            <input type="text" name="timeslot" value={this.state.timeslot || ''} placeholder={course.timeslot} onChange={(e) => this.handleChange(e)}/>
+            <input type="text" name="timeslot" value={this.state.timeslot || ''} placeholder={task.timeslot} onChange={(e) => this.handleChange(e)}/>
             <br/>
 
             <select onChange={(e) => this.handleSelectChange(e)}>
-              {course.instructor!==null ?
-                <option value={course.instructorId}>{course.instructor.firstname+" (current)"}</option>
+              {task.instructor!==null ?
+                <option value={task.instructorId}>{task.instructor.firstname+" (current)"}</option>
               : <option value="staff">Staff</option>
               }
               {otherInstructors.map(instructor => {
@@ -143,7 +143,7 @@ class EditCourseContainer extends Component {
                   <option value={instructor.id} key={instructor.id}>{instructor.firstname}</option>
                 )
               })}
-              {course.instructor!==null && <option value="staff">Staff</option>}
+              {task.instructor!==null && <option value="staff">Staff</option>}
             </select>
   
             <button type="submit">
@@ -153,10 +153,10 @@ class EditCourseContainer extends Component {
           </form>
           { this.state.error !=="" && <p>{this.state.error}</p> }
 
-          {course.instructorId !== null ?
+          {task.instructorId !== null ?
             <div> Current instructor:  
-            <Link to={`/instructor/${course.instructorId}`}>{course.instructor.firstname}</Link>
-            <button onClick={async () => {await editCourse({id:course.id, instructorId: null});  fetchCourse(course.id)}}>Unassign</button>
+            <Link to={`/instructor/${task.instructorId}`}>{task.instructor.firstname}</Link>
+            <button onClick={async () => {await editTask({id:task.id, instructorId: null});  fetchTask(task.id)}}>Unassign</button>
             </div>
             : <div> No instructor currently assigned </div>
           }
@@ -168,7 +168,7 @@ class EditCourseContainer extends Component {
                 <Link to={`/instructor/${instructor.id}`}>
                   <h4>{instructor.firstname}</h4>
                 </Link>
-                <button onClick={async() => {await editCourse({id:course.id, instructorId: instructor.id}); fetchCourse(course.id)}}>Assign this instructor</button>
+                <button onClick={async() => {await editTask({id:task.id, instructorId: instructor.id}); fetchTask(task.id)}}>Assign this instructor</button>
             </div>
             )})
           }
@@ -181,18 +181,18 @@ class EditCourseContainer extends Component {
 // map state to props
 const mapState = (state) => {
     return {
-      course: state.course,
+      task: state.task,
       allInstructors: state.allInstructors
     };
   };
 
 const mapDispatch = (dispatch) => {
     return({
-        editCourse: (course) => dispatch(editCourseThunk(course)),
-        fetchCourse: (id) => dispatch(fetchCourseThunk(id)),
+        editTask: (task) => dispatch(editTaskThunk(task)),
+        fetchTask: (id) => dispatch(fetchTaskThunk(id)),
         fetchInstructors: () => dispatch(fetchAllInstructorsThunk()),
 
     })
 }
 
-export default connect(mapState, mapDispatch)(EditCourseContainer);
+export default connect(mapState, mapDispatch)(EditTaskContainer);

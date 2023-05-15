@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { 
   fetchInstructorThunk,
-  fetchAllCoursesThunk,
-  editCourseThunk 
+  fetchAllTasksThunk,
+  editTaskThunk 
 } from "../../store/thunks";
 
 import { InstructorView } from "../views";
@@ -39,8 +39,8 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchInstructor: (id) => dispatch(fetchInstructorThunk(id)),
-    editCourse: (course) => dispatch(editCourseThunk(course)),
-    fetchCourses: () => dispatch(fetchAllCoursesThunk()),
+    editTask: (task) => dispatch(editTaskThunk(task)),
+    fetchTasks: () => dispatch(fetchAllTasksThunk()),
 
   };
 };
