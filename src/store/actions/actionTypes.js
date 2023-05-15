@@ -7,10 +7,10 @@ export const FETCH_ALL_INSTRUCTORS = "FETCH_ALL_INSTRUCTORS";
 export const FETCH_INSTRUCTOR = "FETCH_INSTRUCTOR";
 
 //All students
-export const FETCH_ALL_COURSES = "FETCH_ALL_COURSES";
-export const ADD_COURSE = "ADD_COURSE";
-export const DELETE_COURSE = "DELETE_COURSE";
-export const EDIT_COURSE = "EDIT_COURSE";
+export const FETCH_ALL_TASKS = "FETCH_ALL_TASKS";
+export const ADD_TASK = "ADD_TASK";
+export const DELETE_TASK = "DELETE_TASK";
+export const EDIT_TASK = "EDIT_TASK";
 
 //Single student
-export const FETCH_COURSE = "FETCH_COURSE";
+export const FETCH_TASK = "FETCH_TASK";
