@@ -10,7 +10,7 @@ import { EmployeeView } from "../views";
 
 class EmployeeContainer extends Component {
   componentDidMount() {
-    //getting instructor ID from url
+    //getting employee ID from url
     this.props.fetchEmployee(this.props.match.params.id);
     this.props.fetchTasks();
   }
@@ -18,7 +18,7 @@ class EmployeeContainer extends Component {
   render() {
     return (
       <EmployeeView 
-        instructor={this.props.instructor}
+        employee={this.props.employee}
         editTask={this.props.editTask}
         allTasks={this.props.allTasks}
       />
@@ -29,7 +29,7 @@ class EmployeeContainer extends Component {
 // map state to props
 const mapState = (state) => {
   return {
-    instructor: state.instructor,
+    employee: state.employee,
     allTasks: state.allTasks,
 
   };
