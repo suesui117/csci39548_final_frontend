@@ -10,10 +10,10 @@ class NewTaskContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-          title: "", 
-          timeslot: "",
-          location: "", 
-          instructorId: null, 
+          description: "", 
+          priority: "",
+          isComplete: false, 
+          employeeId: null, 
           redirect: false, 
           redirectId: null,
           error: ""
@@ -29,15 +29,15 @@ class NewTaskContainer extends Component {
     handleSubmit = async event => {
         event.preventDefault();
         //dont need ID because the course has not been created yet
-        if(this.state.title===""){
-          this.setState({error:"Title field is required"});
+        if(this.state.description===""){
+          this.setState({error:"description field is required"});
           return;
         }
         let task = {
-            title: this.state.title,
-            timeslot: this.state.timeslot,
-            location: this.state.location,
-            instructorId: this.state.instructorId
+            description: this.state.description,
+            priority: this.state.priority,
+            isComplete: this.state.isComplete,
+            employeeId: this.state.employeeId
         };
         
         let newTask = await this.props.addTask(task);
@@ -56,7 +56,7 @@ class NewTaskContainer extends Component {
     render() {
       //go to single course view of newly created course
         if(this.state.redirect) {
-          return (<Redirect to={`/course/${this.state.redirectId}`}/>)
+          return (<Redirect to={`/task/${this.state.redirectId}`}/>)
         }
         return (
           <NewTaskView 

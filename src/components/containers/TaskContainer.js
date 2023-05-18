@@ -12,7 +12,7 @@ class CourseContainer extends Component {
   render() {
     return (
       <TaskView 
-        course={this.props.course}
+        task={this.props.task}
       />
     );
   }
