@@ -1,23 +1,24 @@
 import * as at from './actionTypes';
 
+// DONE
 // ACTION CREATORS;
 /** needs to be an action creator
  * for each action type
  */
 
 // All instructors
-export const fetchAllInstructors = (instructors) => {
+export const fetchAllEmployees = (employees) => {
   return {
-    type: at.FETCH_ALL_INSTRUCTORS,
-    payload: instructors,
+    type: at.FETCH_ALL_EMPLOYEES,
+    payload: employees,
   };
 };
 
 //Single instructor
-export const fetchInstructor = (instructor) => {
+export const fetchEmployee = (employee) => {
   return {
-    type: at.FETCH_INSTRUCTOR,
-    payload: instructor,
+    type: at.FETCH_EMPLOYEE,
+    payload: employee,
   };
 };
 

@@ -7,7 +7,7 @@ let path = "http://localhost:5001/api";
 // THUNKS
 
 //All instructors
-export const fetchAllInstructorsThunk = () => async (dispatch) => {
+export const fetchAllEmployeesThunk = () => async (dispatch) => {
   try {
     let res = await axios.get(`${path}/instructors`);
     dispatch(ac.fetchAllInstructors(res.data));

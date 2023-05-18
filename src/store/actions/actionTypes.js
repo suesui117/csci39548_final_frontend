@@ -1,10 +1,11 @@
+//DONE
 // ACTION TYPES;
 
 //All campuses
-export const FETCH_ALL_INSTRUCTORS = "FETCH_ALL_INSTRUCTORS";
+export const FETCH_ALL_EMPLOYEES = "FETCH_ALL_EMPLOYEES";
 
 //Single campus
-export const FETCH_INSTRUCTOR = "FETCH_INSTRUCTOR";
+export const FETCH_EMPLOYEE = "FETCH_EMPLOYEE";
 
 //All students
 export const FETCH_ALL_TASKS = "FETCH_ALL_TASKS";
