@@ -22,6 +22,8 @@ const EmployeeView = (props) => {
             </div>
           );
         })}</div>
+        
+        
         <div>Available tasks:
         {availableTasks.map( task => {
           return (
