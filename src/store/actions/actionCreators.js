@@ -22,6 +22,25 @@ export const fetchEmployee = (employee) => {
   };
 };
 
+
+// SUE - delete employee!!!
+export const deleteEmployee = (employeeId) => {
+  return {
+    type: at.DELETE_EMPLOYEE,
+    payload: employeeId,
+  };
+};
+
+
+// SUE - add employee!!!
+export const addEmployee = (employee) => {
+  return {
+    type: at.ADD_EMPLOYEE,
+    payload: employee,
+  };
+};
+
+
 //All Tasks
 export const fetchAllTasks = (tasks) => {
   return {
