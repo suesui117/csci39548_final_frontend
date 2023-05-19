@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { fetchTaskThunk } from "../../store/thunks";
 import { TaskView } from "../views";
 
-class CourseContainer extends Component {
+class TaskContainer extends Component {
   componentDidMount() {
     //getting course ID from url
-    this.props.fetchCourse(this.props.match.params.id);
+    this.props.fetchTask(this.props.match.params.id);
   }
 
   render() {
@@ -32,4 +32,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(CourseContainer);
+export default connect(mapState, mapDispatch)(TaskContainer);

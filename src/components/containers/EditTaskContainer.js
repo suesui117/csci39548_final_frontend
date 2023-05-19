@@ -125,11 +125,11 @@ class EditTaskContainer extends Component {
         return (
         <div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => this.handleSubmit(e)}>
-            <label style= {{color:'#11153e', fontWeight: 'bold'}}>Title: </label>
+            <label style= {{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
             <input type="text" name="description" value={this.state.description || ''} placeholder={task.description} onChange ={(e) => this.handleChange(e)}/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Timeslot: </label>
+            <label style={{color:'#11153e', fontWeight: 'bold'}}>Priority: </label>
             <input type="text" name="priority" value={this.state.priority || ''} placeholder={task.priority} onChange={(e) => this.handleChange(e)}/>
             <br/>
 
