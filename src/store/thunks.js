@@ -16,15 +16,8 @@ export const fetchAllEmployeesThunk = () => async (dispatch) => {
   }
 };
 
-//Single instructor
+//Single employee
 export const fetchEmployeeThunk = (id) => async (dispatch) => {
-  // thunk creator would not an be async function 
-  // if using Promise.then:
-  // return axios
-  //   .get(`${path}/api/instructors/${id}`)
-  //   .then((res) => res.data)
-  //   .then((instructor) => dispatch(ac.fetchInstructor(instructor)))
-  //   .catch((err) => console.log(err));
   try {
     let res = await axios.get(`${path}/employees/${id}`);
     dispatch(ac.fetchEmployee(res.data));
@@ -33,7 +26,7 @@ export const fetchEmployeeThunk = (id) => async (dispatch) => {
   }
 };
 
-//All courses
+//All tasks
 export const fetchAllTasksThunk = () => async (dispatch) => {
   try {
     let res = await axios.get(`${path}/tasks`);

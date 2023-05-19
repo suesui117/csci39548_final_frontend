@@ -16,8 +16,8 @@ class AllTasksContainer extends Component {
     render(){
         return(
             <div>
-                <AllTasksView
-                  tasks={this.props.tasks}
+                <AllTasksView 
+                  tasks={this.props.allTasks}
                   deleteTask={this.props.deleteTask}   
                 />
             </div>
@@ -28,7 +28,7 @@ class AllTasksContainer extends Component {
 // Map state to props;
 const mapState = (state) => {
   return {
-    alltasks: state.allTasks,
+    allTasks: state.allTasks,
   };
 };
 
