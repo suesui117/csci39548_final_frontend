@@ -7,13 +7,13 @@ import { Switch, Route } from "react-router-dom";
 import {
   HomePageContainer,
   EmployeeContainer,
-  NewEmployeeContainer,
   TaskContainer,
   AllEmployeesContainer,
   AllTasksContainer,
   NewTaskContainer,
   EditTaskContainer
 } from './components/containers';
+
 
 // if you create separate components for adding/editing 
 // a student or instructor, make sure you add routes to those
@@ -26,11 +26,11 @@ const App = () => {
         <Route exact path="/" component={HomePageContainer} />
         <Route exact path="/employees" component={AllEmployeesContainer} />
         <Route exact path="/employee/:id" component={EmployeeContainer} />
-        <Route exact path="/newemployee" component={NewEmployeeContainer} />
         <Route exact path="/tasks" component={AllTasksContainer} />
         <Route exact path="/task/:id" component={TaskContainer} />
-        <Route exact path="/newtask" component={NewTaskContainer} />
         <Route exact path="/edittask/:id" component={EditTaskContainer} />
+        <Route exact path="/newtask" component={NewTaskContainer} />
+        <Route exact path="/newemployee" component={NewTaskContainer} />
       </Switch>        
     </div>
   );
