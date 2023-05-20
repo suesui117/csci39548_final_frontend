@@ -2,8 +2,12 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const AllEmployeesView = (props) => {
-  if (!props.allEmployees.length) {
-    return <div>There are no employees.</div>;
+  if (!props.department) {
+    return <div>There are no employees.
+      <Link to={`/newemployee`}>
+        <button>Add New Employee</button>
+      </Link>
+    </div>;
   }
 
   return (
@@ -20,6 +24,10 @@ const AllEmployeesView = (props) => {
         );
 
       })}
+
+      <Link to={`/newemployee`}>
+        <button>Add New employee</button>
+      </Link>
     </div>
   );
 };

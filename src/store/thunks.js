@@ -26,6 +26,19 @@ export const fetchEmployeeThunk = (id) => async (dispatch) => {
   }
 };
 
+
+// NEW FEATURE, add an employee
+export const addEmployeeThunk = (employee) => async (dispatch) => {
+  // course = { title: "CSCI 127" }
+  try {
+    let res = await axios.post(`${path}/employees`, employee);
+    dispatch(ac.addEmployee(res.data));
+    return res.data;
+  } catch(err) {
+    console.error(err);
+  }
+};
+
 //All tasks
 export const fetchAllTasksThunk = () => async (dispatch) => {
   try {
