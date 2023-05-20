@@ -27,13 +27,25 @@ export const fetchEmployeeThunk = (id) => async (dispatch) => {
 };
 
 
-// NEW FEATURE, add an employee
+// NEW FEATURE: ADDING AN EMPLOYEE
 export const addEmployeeThunk = (employee) => async (dispatch) => {
   // course = { title: "CSCI 127" }
   try {
     let res = await axios.post(`${path}/employees`, employee);
     dispatch(ac.addEmployee(res.data));
     return res.data;
+  } catch(err) {
+    console.error(err);
+  }
+};
+
+
+// NEW FEATURE: DELETE AN EXISTING EMPLOYEE!!!
+export const deleteEmployeeThunk = taskId => async dispatch => {
+  try {
+    await axios.delete(`${path}/employees/${employeeId}`);
+    //delete succesful so change state with dispatch
+    dispatch(ac.deleteEmployee(employeeId)); // deleteEmployee is defined in actionCreators.js
   } catch(err) {
     console.error(err);
   }

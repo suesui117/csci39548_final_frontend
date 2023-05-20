@@ -7,7 +7,7 @@ export const FETCH_ALL_EMPLOYEES = "FETCH_ALL_EMPLOYEES";
 //Single campus
 export const FETCH_EMPLOYEE = "FETCH_EMPLOYEE";
 
-// SUE - new option
+// SUE - NEW FEATURE!!!
 export const DELETE_EMPLOYEE = "DELETE_EMPLOYEE";
 export const ADD_EMPLOYEE = "ADD_EMPLOYEE";
 
