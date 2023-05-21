@@ -11,7 +11,7 @@ const EmployeeView = (props) => {
       <h1>{employee.firstname}</h1>
       <h3>{employee.department}</h3>
       <div style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
-        <div>Assigned tasks hihi:
+        <div>Assigned tasks:
         {assignedTasks.map( task => {
           return (
             <div key={task.id}>

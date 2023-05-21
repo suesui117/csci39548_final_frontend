@@ -12,8 +12,8 @@ import {
   AllTasksContainer,
   EditTaskContainer,
   NewTaskContainer,
+  NewEmployeeContainer
 } from './components/containers';
-import NewEmployeeContainer from "./components/containers/NewEmployeeContainer";
 
 
 
