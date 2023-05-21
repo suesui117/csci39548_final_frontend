@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 
-import { fetchEmployeeThunk, editEmployeeThunk, fetchAllEmployeesThunk  } from '../../store/thunks';
+import { fetchAllEmployeesThunk, fetchEmployeeThunk, editEmployeeThunk  } from '../../store/thunks';
 
 
 /*
@@ -38,12 +38,12 @@ functionality of the buttons controlling that portion of the UI.
 
 */
 
-class EditTaskContainer extends Component {
+class EditEmployeeContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-          description: "", 
-          priority: "",
+          firstname: "", 
+          lastname: "",
           employeeId: null, 
           redirect: false, 
           redirectId: null,
@@ -52,12 +52,12 @@ class EditTaskContainer extends Component {
     }
 
     componentDidMount() {
-        //getting course ID from url
+        //getting employee ID from url
         this.props.fetchTask(this.props.match.params.id);
         this.props.fetchEmployees();
         this.setState({
-            description: this.props.task.description, 
-            priority: this.props.task.priority,
+            firstname: this.props.task.firstname, 
+            lastname: this.props.task.lastname,
             employeeId: this.props.task.employeeId, 
         });
       }
@@ -84,16 +84,16 @@ class EditTaskContainer extends Component {
     handleSubmit = event => {
         event.preventDefault();
         //implementing form validation
-        if (this.state.description === "") {
-          this.setState({error: "Error: description cannot be empty"});
+        if (this.state.firstname === "") {
+          this.setState({error: "Error: firstname cannot be empty"});
           return;
         }
 
         //get new info for course from form input
         let task = {
             id: this.props.task.id,
-            description: this.state.description,
-            priority: this.state.priority,
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
             employeeId: this.state.employeeId
         };
         
@@ -125,12 +125,12 @@ class EditTaskContainer extends Component {
         return (
         <div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => this.handleSubmit(e)}>
-            <label style= {{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
-            <input type="text" name="description" value={this.state.description || ''} placeholder={task.description} onChange ={(e) => this.handleChange(e)}/>
+            <label style= {{color:'#11153e', fontWeight: 'bold'}}>Firstname: </label>
+            <input type="text" name="firstname" value={this.state.firstname || ''} placeholder={task.firstname} onChange ={(e) => this.handleChange(e)}/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Priority: </label>
-            <input type="text" name="priority" value={this.state.priority || ''} placeholder={task.priority} onChange={(e) => this.handleChange(e)}/>
+            <label style={{color:'#11153e', fontWeight: 'bold'}}>Lastname: </label>
+            <input type="text" name="lastname" value={this.state.lastname || ''} placeholder={task.lastname} onChange={(e) => this.handleChange(e)}/>
             <br/>
 
             <select onChange={(e) => this.handleSelectChange(e)}>
@@ -188,11 +188,11 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return({
-        editTask: (task) => dispatch(editTaskThunk(task)),
-        fetchTask: (id) => dispatch(fetchTaskThunk(id)),
+        editTask: (task) => dispatch(editEmployeeThunk(task)),
+        fetchTask: (id) => dispatch(fetchEmployeeThunk(id)),
         fetchEmployees: () => dispatch(fetchAllEmployeesThunk()),
 
     })
 }
 
-export default connect(mapState, mapDispatch)(EditTaskContainer);
+export default connect(mapState, mapDispatch)(EditEmployeeContainer);
