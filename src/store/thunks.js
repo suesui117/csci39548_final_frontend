@@ -41,7 +41,7 @@ export const addEmployeeThunk = (employee) => async (dispatch) => {
 
 
 // NEW FEATURE: DELETE AN EXISTING EMPLOYEE!!!
-export const deleteEmployeeThunk = taskId => async dispatch => {
+export const deleteEmployeeThunk = employeeId => async dispatch => {
   try {
     await axios.delete(`${path}/employees/${employeeId}`);
     //delete succesful so change state with dispatch
