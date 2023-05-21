@@ -7,7 +7,9 @@ import { fetchEmployeeThunk, editEmployeeThunk, fetchAllTasksThunk } from '../..
 class EditEmployeeContainer extends Component {
   constructor(props) {
     super(props);
+    // Initialize component state including the employeeId variable
     this.state = {
+      employeeId: props.match.params.id, // Set employeeId from the route params
       firstname: '',
       lastname: '',
       department: '',
@@ -17,7 +19,9 @@ class EditEmployeeContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchEmployee(this.props.match.params.id);
+    const { employeeId } = this.state;
+    // Fetch employee data based on the employeeId
+    this.props.fetchEmployee(employeeId);
     this.setState({
       firstname: this.props.employee.firstname,
       lastname: this.props.employee.lastname,
@@ -25,15 +29,19 @@ class EditEmployeeContainer extends Component {
     });
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
-  }
+  };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
-    if (this.state.firstname === '' || this.state.lastname === '' || this.state.department === '') {
+    if (
+      this.state.firstname === '' ||
+      this.state.lastname === '' ||
+      this.state.department === ''
+    ) {
       this.setState({ error: 'Error: All fields must be filled' });
       return;
     }
@@ -47,17 +55,18 @@ class EditEmployeeContainer extends Component {
 
     this.props.editEmployee(updatedEmployee);
     this.setState({ redirect: true });
-  }
+  };
 
   componentWillUnmount() {
     this.setState({ redirect: false });
   }
 
   render() {
-    const { employee, allTasks, editEmployee, fetchEmployee } = this.props;
+    const { employee, allTasks } = this.props;
+    const { redirect, firstname, lastname, department, error } = this.state;
 
-    if (this.state.redirect) {
-      return (<Redirect to={`/employee/${this.props.match.params.id}`} />)
+    if (redirect) {
+      return <Redirect to={`/employee/${this.props.match.params.id}`} />;
     }
 
     return (
@@ -67,7 +76,7 @@ class EditEmployeeContainer extends Component {
           <input
             type="text"
             name="firstname"
-            value={this.state.firstname}
+            value={firstname}
             onChange={this.handleChange}
           />
           <br />
@@ -76,7 +85,7 @@ class EditEmployeeContainer extends Component {
           <input
             type="text"
             name="lastname"
-            value={this.state.lastname}
+            value={lastname}
             onChange={this.handleChange}
           />
           <br />
@@ -85,7 +94,7 @@ class EditEmployeeContainer extends Component {
           <input
             type="text"
             name="department"
-            value={this.state.department}
+            value={department}
             onChange={this.handleChange}
           />
           <br />
@@ -93,13 +102,13 @@ class EditEmployeeContainer extends Component {
           <button type="submit">Submit</button>
         </form>
 
-        {this.state.error !== '' && <p>{this.state.error}</p>}
+        {error !== '' && <p>{error}</p>}
 
         {allTasks.length > 0 ? (
           <div>
             <h3>Tasks assigned to {employee.firstname}:</h3>
             <ul>
-              {allTasks.map(task => (
+              {allTasks.map((task) => (
                 <li key={task.id}>
                   <Link to={`/task/${task.id}`}>{task.description}</Link>
                 </li>
@@ -130,7 +139,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditEmployeeContainer);
-
 
 
 
