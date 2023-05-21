@@ -6,7 +6,8 @@ import * as at from './actionTypes';
  * for each action type
  */
 
-// All instructors
+
+// All Employees
 export const fetchAllEmployees = (employees) => {
   return {
     type: at.FETCH_ALL_EMPLOYEES,
@@ -14,7 +15,9 @@ export const fetchAllEmployees = (employees) => {
   };
 };
 
-//Single instructor
+
+
+// Single Employee
 export const fetchEmployee = (employee) => {
   return {
     type: at.FETCH_EMPLOYEE,
@@ -42,7 +45,18 @@ export const deleteEmployee = (employeeId) => {
 };
 
 
-//All Tasks
+
+// SUE - NEW FEATURE: EDIT EMPLOYEE!!
+export const editEmployee = (employee) => {
+  return {
+    type: at.EDIT_EMPLOYEE,
+    payload: employee,
+  };
+};
+
+
+
+// All Tasks
 export const fetchAllTasks = (tasks) => {
   return {
     type: at.FETCH_ALL_TASKS,
@@ -50,6 +64,16 @@ export const fetchAllTasks = (tasks) => {
   };
 };
 
+
+// Single Task
+export const fetchTask = (task) => {
+  return {
+    type: at.FETCH_TASK,
+    payload: task,
+  };
+};
+
+// Add a Task
 export const addTask = (task) => {
   return {
     type: at.ADD_TASK,
@@ -57,6 +81,8 @@ export const addTask = (task) => {
   };
 };
 
+
+// Delete an existing Task
 export const deleteTask = (taskId) => {
   return {
     type: at.DELETE_TASK,
@@ -65,6 +91,7 @@ export const deleteTask = (taskId) => {
 };
 
 
+// Edit a Task
 export const editTask = (task) => {
   return {
     type: at.EDIT_TASK,
@@ -72,10 +99,4 @@ export const editTask = (task) => {
   };
 };
 
-//Single Task
-export const fetchTask = (task) => {
-  return {
-    type: at.FETCH_TASK,
-    payload: task,
-  };
-};
+
