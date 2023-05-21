@@ -7,9 +7,8 @@ import { fetchEmployeeThunk, editEmployeeThunk, fetchAllTasksThunk } from '../..
 class EditEmployeeContainer extends Component {
   constructor(props) {
     super(props);
-    // Initialize component state including the employeeId variable
     this.state = {
-      employeeId: props.match.params.id, // Set employeeId from the route params
+      employeeId: props.match.params.id,
       firstname: '',
       lastname: '',
       department: '',
@@ -20,8 +19,8 @@ class EditEmployeeContainer extends Component {
 
   componentDidMount() {
     const { employeeId } = this.state;
-    // Fetch employee data based on the employeeId
     this.props.fetchEmployee(employeeId);
+    this.props.fetchAllTasks();
     this.setState({
       firstname: this.props.employee.firstname,
       lastname: this.props.employee.lastname,
@@ -69,6 +68,11 @@ class EditEmployeeContainer extends Component {
       return <Redirect to={`/employee/${this.props.match.params.id}`} />;
     }
 
+    // Filter tasks assigned to the current employee
+    const tasksAssignedToEmployee = allTasks.filter(
+      (task) => task.employeeId === employee.id
+    );
+
     return (
       <div>
         <form style={{ textAlign: 'center' }} onSubmit={this.handleSubmit}>
@@ -104,11 +108,11 @@ class EditEmployeeContainer extends Component {
 
         {error !== '' && <p>{error}</p>}
 
-        {allTasks.length > 0 ? (
+        {tasksAssignedToEmployee.length > 0 ? (
           <div>
             <h3>Tasks assigned to {employee.firstname}:</h3>
             <ul>
-              {allTasks.map((task) => (
+              {tasksAssignedToEmployee.map((task) => (
                 <li key={task.id}>
                   <Link to={`/task/${task.id}`}>{task.description}</Link>
                 </li>
@@ -116,7 +120,7 @@ class EditEmployeeContainer extends Component {
             </ul>
           </div>
         ) : (
-          <p>No tasks assigned to {employee.firstname}</p>
+          <p> No tasks assigned to {employee.firstname}</p>
         )}
       </div>
     );
@@ -139,8 +143,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditEmployeeContainer);
-
-
 
 
 // import { Component } from 'react';
