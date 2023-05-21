@@ -1,3 +1,4 @@
+// Original in class format
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -41,3 +42,40 @@ const mapDispatch = (dispatch) => {
 };
 
 export default connect(mapState, mapDispatch)(AllTasksContainer);
+
+
+
+
+
+// In Function format
+// import React, { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import {
+//   fetchAllTasksThunk,
+//   deleteTaskThunk
+// } from '../../store/thunks';
+// import AllTasksView from '../views/AllTasksView';
+
+// const AllTasksContainer = () => {
+//   const allTasks = useSelector((state) => state.allTasks);
+//   const dispatch = useDispatch();
+
+//   useEffect(() => {
+//     dispatch(fetchAllTasksThunk());
+//   }, [dispatch]);
+
+//   const deleteTask = (taskId) => {
+//     dispatch(deleteTaskThunk(taskId));
+//   };
+
+//   return (
+//     <div>
+//       <AllTasksView
+//         tasks={allTasks}
+//         deleteTask={deleteTask}
+//       />
+//     </div>
+//   );
+// };
+
+// export default AllTasksContainer;
