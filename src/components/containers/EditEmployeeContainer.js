@@ -68,6 +68,11 @@ class EditEmployeeContainer extends Component {
       return <Redirect to={`/employee/${this.props.match.params.id}`} />;
     }
 
+
+    if (!employee) {
+      return <p>No employees found.</p>;
+    }
+
     // Filter tasks assigned to the current employee
     const tasksAssignedToEmployee = allTasks.filter(
       (task) => task.employeeId === employee.id
