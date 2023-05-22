@@ -20,7 +20,7 @@ const NewEmployeeView = (props) => {
           <label className="formLabel">Department:</label>
           <input type="text" name="department" className="formInput" onChange={(e) => handleChange(e)} />
 
-          <button type="submit" className="submitButton">
+          <button style={{fontWeight: 'bold'}} type="submit" className="submitButton">
             Submit
           </button>
         </form>

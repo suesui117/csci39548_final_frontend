@@ -6,9 +6,9 @@ const AllTasksView = (props) => {
   if (!tasks.length) {
     return (
     <div>
-      <p>There are no tasks.</p>
+      <p style={{ color: 'orange' }}>There are no tasks.</p>
       <Link to={`/newtask`}>
-        <button>Add New task</button>
+        <button style={{ color: 'green' }}>Add New task</button>
       </Link>
     </div>
     );

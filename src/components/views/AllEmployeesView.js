@@ -29,7 +29,7 @@ const AllEmployeesView = (props) => {
               <h1 className="employee-name">{name}</h1>
             </Link>
             
-            <p className="employee-department">{employee.department}</p>
+            <p style={{ color: 'orange' }} className="employee-department"> {employee.department}</p>
             <button className="delete-button" onClick={() => deleteEmployee(employee.id)}>
               Delete
             </button>
