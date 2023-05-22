@@ -1,42 +1,33 @@
+import React from 'react';
+import './NewEmployeeView.css';
 
 const NewEmployeeView = (props) => {
-    const {handleChange, handleSubmit, error } = props;
-  
-    return (
-      <div className="root">
-        <div className="formContainer">
-          <div className="formTitle">
-            <h2 style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e'}}>
-              New Employee
-            </h2>
-          </div>
-          <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
-            <label style= {{color:'#11153e', fontWeight: 'bold'}}>firstname: </label>
-            <input type="text" name="firstname" onChange ={(e) => handleChange(e)} />
-            <br/>
-            <br/>
-  
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>lastname: </label>
-            <input type="text" name="lastname" onChange={(e) => handleChange(e)} />
-            <br/>
-            <br/>
-  
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>department: </label>
-            <input type="text" name="department" onChange={(e) => handleChange(e)} />
-            <br/>
-            <br/>
-  
-            <button type="submit">
-              Submit
-            </button>
-            <br/>
-            <br/>
-          </form>
-          {error!=="" && <p>{error}</p>}
-          </div>
+  const { handleChange, handleSubmit, error } = props;
+
+  return (
+    <div className="root">
+      <div className="formContainer">
+        <div className="formTitle">
+          <h2>New Employee</h2>
         </div>
-      
-    )
-  }
-  
-  export default NewEmployeeView;
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <label className="formLabel">First Name:</label>
+          <input type="text" name="firstname" className="formInput" onChange={(e) => handleChange(e)} />
+
+          <label className="formLabel">Last Name:</label>
+          <input type="text" name="lastname" className="formInput" onChange={(e) => handleChange(e)} />
+
+          <label className="formLabel">Department:</label>
+          <input type="text" name="department" className="formInput" onChange={(e) => handleChange(e)} />
+
+          <button type="submit" className="submitButton">
+            Submit
+          </button>
+        </form>
+        {error !== "" && <p className="errorMessage">{error}</p>}
+      </div>
+    </div>
+  );
+};
+
+export default NewEmployeeView;
