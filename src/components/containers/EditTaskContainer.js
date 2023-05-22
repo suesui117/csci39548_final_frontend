@@ -112,12 +112,20 @@ class EditTaskContainer extends Component {
     }
 
     render() {
-        let { task, allEmployees, editTask, fetchTask} = this.props;
-        let assignedEmployee = task.employeeId;
 
+        let { task, allEmployees, editTask, fetchTask} = this.props;
+        // check if the task is true first, if false, prints this helpful message
+        if (!task) {
+          return <p style={{ color: 'orange', fontWeight: 'bold' }}>No task found.</p>;
+        }
+
+        // if true, then assign the task's employeeID.
+        let assignedEmployee = task.employeeId;
+        // filtering out the current assigned employee to get other employees
         let otherEmployees = allEmployees.filter(employee => employee.id!==assignedEmployee);
       
-        //go to single course view of the edited course
+
+        //go to single task view of the edited course
         if(this.state.redirect) {
           return (<Redirect to={`/task/${this.state.redirectId}`}/>)
         }
