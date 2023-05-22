@@ -5,11 +5,18 @@ import { TaskView } from "../views";
 
 class TaskContainer extends Component {
   componentDidMount() {
-    //getting course ID from url
+    //getting task ID from url
     this.props.fetchTask(this.props.match.params.id);
   }
 
   render() {
+
+    // conditional check, if the the task is false, then return this message to the user
+    const { task } = this.props;
+    if (!task) {
+      return <p style={{ color: 'orange', fontWeight: 'bold' }}>No task found.</p>;
+    }
+
     return (
       <TaskView 
         task={this.props.task}

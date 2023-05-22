@@ -16,6 +16,13 @@ class EmployeeContainer extends Component {
   }
 
   render() {
+
+    // conditional check, if the the employee is false, then return this message to the user
+    const { employee } = this.props;
+    if (!employee) {
+      return <p style={{ color: 'orange', fontWeight: 'bold' }}>No employee found.</p>;
+    }
+
     return (
       <EmployeeView 
         employee={this.props.employee}
