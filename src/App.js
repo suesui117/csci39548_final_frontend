@@ -24,7 +24,7 @@ import {
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App App-background">
       <Switch>
         <Route exact path="/" component={HomePageContainer} />
         <Route exact path="/employees" component={AllEmployeesContainer} />
