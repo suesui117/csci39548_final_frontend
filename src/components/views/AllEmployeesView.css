@@ -1,0 +1,27 @@
+.all-employees-container {
+    font-family: Arial, sans-serif;
+  }
+  
+  .no-employees-message {
+    color: red;
+  }
+  
+  .add-employee-button {
+    color: blue;
+  }
+  
+  .employee-name {
+    font-family: Helvetica, sans-serif;
+    color: green;
+  }
+  
+  .employee-department {
+    font-family: Helvetica, sans-serif;
+    color: purple;
+  }
+  
+  .delete-button {
+    font-family: Arial, sans-serif;
+    color: red;
+  }
+  

@@ -1,60 +1,102 @@
 import * as at from './actionTypes';
 
+// DONE
 // ACTION CREATORS;
 /** needs to be an action creator
  * for each action type
  */
 
-// All instructors
-export const fetchAllInstructors = (instructors) => {
-  return {
-    type: at.FETCH_ALL_INSTRUCTORS,
-    payload: instructors,
-  };
-};
 
-//Single instructor
-export const fetchInstructor = (instructor) => {
+// All Employees
+export const fetchAllEmployees = (employees) => {
   return {
-    type: at.FETCH_INSTRUCTOR,
-    payload: instructor,
-  };
-};
-
-//All courses
-export const fetchAllCourses = (courses) => {
-  return {
-    type: at.FETCH_ALL_COURSES,
-    payload: courses,
-  };
-};
-
-export const addCourse = (course) => {
-  return {
-    type: at.ADD_COURSE,
-    payload: course,
-  };
-};
-
-export const deleteCourse = (courseId) => {
-  return {
-    type: at.DELETE_COURSE,
-    payload: courseId,
+    type: at.FETCH_ALL_EMPLOYEES,
+    payload: employees,
   };
 };
 
 
-export const editCourse = (course) => {
+
+// Single Employee
+export const fetchEmployee = (employee) => {
   return {
-    type: at.EDIT_COURSE,
-    payload: course,
+    type: at.FETCH_EMPLOYEE,
+    payload: employee,
   };
 };
 
-//Single course
-export const fetchCourse = (course) => {
+
+
+// SUE - NEW FEATURE: ADD EMPLOYEE!!!
+export const addEmployee = (employee) => {
   return {
-    type: at.FETCH_COURSE,
-    payload: course,
+    type: at.ADD_EMPLOYEE,
+    payload: employee,
   };
 };
+
+
+// SUE - NEW FEATURE: DELETE EMPLOYEE!!
+export const deleteEmployee = (employeeId) => {
+  return {
+    type: at.DELETE_EMPLOYEE,
+    payload: employeeId,
+  };
+};
+
+
+
+// SUE - NEW FEATURE: EDIT EMPLOYEE!!
+export const editEmployee = (employee) => {
+  return {
+    type: at.EDIT_EMPLOYEE,
+    payload: employee,
+  };
+};
+
+
+
+// All Tasks
+export const fetchAllTasks = (tasks) => {
+  return {
+    type: at.FETCH_ALL_TASKS,
+    payload: tasks,
+  };
+};
+
+
+// Single Task
+export const fetchTask = (task) => {
+  return {
+    type: at.FETCH_TASK,
+    payload: task,
+  };
+};
+
+// Add a Task
+export const addTask = (task) => {
+  return {
+    type: at.ADD_TASK,
+    payload: task,
+  };
+};
+
+
+// Delete an existing Task
+export const deleteTask = (taskId) => {
+  return {
+    type: at.DELETE_TASK,
+    payload: taskId,
+  };
+};
+
+
+// Edit a Task
+export const editTask = (task) => {
+  return {
+    type: at.EDIT_TASK,
+    payload: task,
+  };
+};
+
+
