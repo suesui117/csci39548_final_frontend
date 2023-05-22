@@ -70,7 +70,7 @@ class EditEmployeeContainer extends Component {
 
 
     if (!employee) {
-      return <p style={{color:'orange', fontWeight: 'bold'}}>No employees found.</p>;
+      return <p style={{color:'orange', fontWeight: 'bold'}}>No employee found.</p>;
     }
 
     // Filter tasks assigned to the current employee
