@@ -125,11 +125,11 @@ class EditTaskContainer extends Component {
         return (
         <div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => this.handleSubmit(e)}>
-            <label style= {{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
+            <label style= {{color:'orange', fontWeight: 'bold'}}>Description: </label>
             <input type="text" name="description" value={this.state.description || ''} placeholder={task.description} onChange ={(e) => this.handleChange(e)}/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Priority: </label>
+            <label style={{color:'orange', fontWeight: 'bold'}}>Priority: </label>
             <input type="text" name="priority" value={this.state.priority || ''} placeholder={task.priority} onChange={(e) => this.handleChange(e)}/>
             <br/>
 
@@ -154,19 +154,19 @@ class EditTaskContainer extends Component {
           { this.state.error !=="" && <p>{this.state.error}</p> }
 
           {task.employeeId !== null ?
-            <div> Current employee:  
-            <Link to={`/employee/${task.employeeId}`}>{task.employee.firstname}</Link>
+            <div style={{color:'orange', fontWeight: 'bold'}}> Current employee:  
+            <Link style={{color:'green', fontWeight: 'bold'}} to={`/employee/${task.employeeId}`}> {task.employee.firstname}</Link>
             <button onClick={async () => {await editTask({id:task.id, employeeId: null});  fetchTask(task.id)}}>Unassign</button>
             </div>
-            : <div> No employee currently assigned </div>
+            : <div style={{color:'orange', fontWeight: 'bold'}}> No employee currently assigned </div>
           }
 
-          <div> Other employees
+          <div style={{color:'green', fontWeight: 'bold'}}> Other employees
           {otherEmployees.map(employee => {
             return (
             <div key={employee.id}>
                 <Link to={`/employee/${employee.id}`}>
-                  <h4>{employee.firstname}</h4>
+                  <h4 style={{color:'orange', fontWeight: 'bold'}}>{employee.firstname}</h4>
                 </Link>
                 <button onClick={async() => {await editTask({id:task.id, employeeId: employee.id}); fetchTask(task.id)}}>Assign this employee</button>
             </div>

@@ -4,11 +4,11 @@ const TaskView = (props) => {
   const { task } = props;
   return (
     <div>
-      <h1>{task.description}</h1>
-      {task.employee ? <h3>{task.employee.firstname + " " + task.employee.lastname}</h3>: <h3>staff</h3>}
-      <Link to={`/edittask/${task.id}`}>Edit task information</Link>
+      <h1 style={{color:'orange', fontWeight: 'bold'}}>{task.description}</h1>
+      {task.employee ? <h3 style={{color:'orange', fontWeight: 'bold'}}>{task.employee.firstname + " " + task.employee.lastname}</h3>: <h3 style={{color:'orange', fontWeight: 'bold'}}>staff</h3>}
+      <Link style={{color:'orange', fontWeight: 'bold'}} to={`/edittask/${task.id}`}>Edit task information</Link>
       <br/>
-      <Link to={`/tasks`}>View all tasks</Link>
+      <Link style={{color:'orange', fontWeight: 'bold'}} to={`/tasks`}>View all tasks</Link>
     </div>
   );
 

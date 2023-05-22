@@ -70,7 +70,7 @@ class EditEmployeeContainer extends Component {
 
 
     if (!employee) {
-      return <p>No employees found.</p>;
+      return <p style={{color:'orange', fontWeight: 'bold'}}>No employees found.</p>;
     }
 
     // Filter tasks assigned to the current employee
@@ -81,7 +81,7 @@ class EditEmployeeContainer extends Component {
     return (
       <div>
         <form style={{ textAlign: 'center' }} onSubmit={this.handleSubmit}>
-          <label>First Name:</label>
+          <label style={{color:'orange', fontWeight: 'bold'}}>First Name:</label>
           <input
             type="text"
             name="firstname"
@@ -90,7 +90,7 @@ class EditEmployeeContainer extends Component {
           />
           <br />
 
-          <label>Last Name:</label>
+          <label style={{color:'orange', fontWeight: 'bold'}}>Last Name:</label>
           <input
             type="text"
             name="lastname"
@@ -99,7 +99,7 @@ class EditEmployeeContainer extends Component {
           />
           <br />
 
-          <label>Department:</label>
+          <label style={{color:'orange', fontWeight: 'bold'}}>Department:</label>
           <input
             type="text"
             name="department"
@@ -115,17 +115,17 @@ class EditEmployeeContainer extends Component {
 
         {tasksAssignedToEmployee.length > 0 ? (
           <div>
-            <h3>Tasks assigned to {employee.firstname}:</h3>
+            <h3 style={{color:'orange', fontWeight: 'bold'}}>Tasks assigned to {employee.firstname}:</h3>
             <ul>
               {tasksAssignedToEmployee.map((task) => (
                 <li key={task.id}>
-                  <Link to={`/task/${task.id}`}>{task.description}</Link>
+                  <Link style={{color:'green', fontWeight: 'bold'}}to={`/task/${task.id}`}>{task.description}</Link>
                 </li>
               ))}
             </ul>
           </div>
         ) : (
-          <p> No tasks assigned to {employee.firstname}</p>
+          <p style={{color:'orange', fontWeight: 'bold'}}> No tasks assigned to {employee.firstname} {employee.lastname}</p>
         )}
       </div>
     );
