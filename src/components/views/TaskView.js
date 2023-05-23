@@ -3,6 +3,8 @@ import "./TaskView.css";
 
 const TaskView = (props) => {
   const { task } = props;
+  // a new variable completionStatus is declared based on the value of task.isComplete. 
+  // If task.isComplete is true=completed, or Incompleted. 
   const completionStatus = task.isComplete ? "Completed" : "Incomplete";
 
   return (
