@@ -131,17 +131,19 @@ class EditEmployeeContainer extends Component {
 
         {tasksAssignedToEmployee.length > 0 ? (
           <div>
-            <h3 style={{color:'orange', fontWeight: 'bold'}}>Tasks assigned to {employee.firstname}:</h3>
-            <ul>
+            <h3 style={{ color: 'orange', fontWeight: 'bold' }}>Tasks assigned to {employee.firstname} {employee.lastname}:</h3>
+            <ul style={{ listStyleType: 'none' }}>
               {tasksAssignedToEmployee.map((task) => (
-                <li key={task.id}>
-                  <Link style={{color:'green', fontWeight: 'bold'}}to={`/task/${task.id}`}>{task.description}</Link>
+                <li key={task.id} style={{ color: 'green', fontWeight: 'bold' }}>
+                  <Link to={`/task/${task.id}`} style={{ color: 'green' }}>
+                    {task.description}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
         ) : (
-          <p style={{color:'orange', fontWeight: 'bold'}}> No tasks assigned to {employee.firstname} {employee.lastname}</p>
+          <p style={{ color: 'orange', fontWeight: 'bold' }}> No tasks assigned to {employee.firstname} {employee.lastname}</p>
         )}
       </div>
     );
