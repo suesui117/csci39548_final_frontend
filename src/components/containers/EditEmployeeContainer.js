@@ -38,31 +38,30 @@ class EditEmployeeContainer extends Component {
  
   handleSubmit = (event) => {
     event.preventDefault();
-    if (
-      this.state.firstname === '' ||
-      this.state.lastname === '' ||
-      this.state.department === ''
-    ) {
-      this.setState({ error: 'Error: All fields must be filled' });
+    const { firstname, lastname, department } = this.state;
+    if (firstname === '') {
+      this.setState({ error: 'Error: First Name cannot be empty', textColor: 'red' });
+      return;
+    }
+    if (lastname === '' || department === '') {
+      this.setState({ error: 'Error: All fields must be filled', textColor: 'red' });
       return;
     }
   
     const updatedEmployee = {
       id: this.props.employee.id,
-      firstname: this.state.firstname,
-      lastname: this.state.lastname,
-      department: this.state.department
+      firstname,
+      lastname,
+      department
     };
   
     this.props.editEmployee(updatedEmployee)
       .then(() => {
-        // This part is changed, added this.setState: component state with new employee data.
-        // BEFORE it's redirected to true!!!
         this.setState({
           firstname: updatedEmployee.firstname,
           lastname: updatedEmployee.lastname,
           department: updatedEmployee.department,
-          redirect: true 
+          redirect: true
         });
       })
       .catch((error) => {
@@ -127,7 +126,7 @@ class EditEmployeeContainer extends Component {
           <button type="submit">Submit</button>
         </form>
 
-        {error !== '' && <p>{error}</p>}
+        {error !== '' && <p style={{ color: 'red' }}>{error}</p>}
 
         {tasksAssignedToEmployee.length > 0 ? (
           <div>
