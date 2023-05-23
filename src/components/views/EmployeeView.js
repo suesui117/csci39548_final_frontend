@@ -17,14 +17,18 @@ const EmployeeView = (props) => {
       <div className="task-section">
         <div className="assigned-tasks">
           <h4 className="task-heading">Assigned tasks:</h4>
-          {assignedTasks.map(task => (
-            <div key={task.id}>
-              <Link to={`/task/${task.id}`} className="task-link">
-                {task.description}
-              </Link>
-              <button onClick={() => editTask({ id: task.id, employeeId: null })} className="task-button">x</button>
-            </div>
-          ))}
+          {assignedTasks.length === 0 ? (
+            <p style={{ color: 'red', fontWeight: 'bold' }}>No assigned tasks to this employee</p>
+          ) : (
+            assignedTasks.map(task => (
+              <div key={task.id}>
+                <Link to={`/task/${task.id}`} className="task-link">
+                  {task.description}
+                </Link>
+                <button onClick={() => editTask({ id: task.id, employeeId: null })} className="checkbox">x</button>
+              </div>
+            ))
+          )}
         </div>
         <div className="available-tasks">
           <h4 className="task-heading">Available tasks:</h4>
@@ -33,7 +37,7 @@ const EmployeeView = (props) => {
               <Link to={`/task/${task.id}`} className="task-link">
                 {task.description}
               </Link>
-              <button onClick={() => editTask({ id: task.id, employeeId: employee.id })} className="task-button">+</button>
+              <button onClick={() => editTask({ id: task.id, employeeId: employee.id })} className="checkbox">+</button>
             </div>
           ))}
         </div>
