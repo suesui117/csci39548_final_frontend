@@ -31,8 +31,10 @@
   
   .task-button {
     color: pink;
-    background-color: transparent;
-    border: none;
+    border: 1px solid black; /* Replace with your desired border properties */
     font-size: 14px;
   }
   
+  .checkbox {
+    margin-left: 10px; /* Adjust the value as per your desired spacing */
+  }
