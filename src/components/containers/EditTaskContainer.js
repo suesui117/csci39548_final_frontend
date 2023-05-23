@@ -106,11 +106,20 @@ class EditTaskContainer extends Component {
             isComplete: this.state.isComplete, // Add isComplete property
         };
         
-        this.props.editTask(task);
-
-        this.setState({
-          redirect: true, 
-          redirectId: this.props.task.id
+        this.props.editTask(task)
+        .then(() => {
+          // Update component state with new task data
+          this.setState({
+            description: task.description,
+            priority: task.priority,
+            employeeId: task.employeeId,
+            isComplete: task.isComplete,
+            redirect: true,
+            redirectId: task.id
+          });
+        })
+        .catch((error) => {
+          // Handle error if necessary
         });
 
     }
