@@ -27,6 +27,7 @@ class EditEmployeeContainer extends Component {
       department: this.props.employee.department
     });
   }
+  
 
   handleChange = (event) => {
     this.setState({
@@ -34,6 +35,7 @@ class EditEmployeeContainer extends Component {
     });
   };
 
+ 
   handleSubmit = (event) => {
     event.preventDefault();
     if (
@@ -44,17 +46,31 @@ class EditEmployeeContainer extends Component {
       this.setState({ error: 'Error: All fields must be filled' });
       return;
     }
-
+  
     const updatedEmployee = {
       id: this.props.employee.id,
       firstname: this.state.firstname,
       lastname: this.state.lastname,
       department: this.state.department
     };
-
-    this.props.editEmployee(updatedEmployee);
-    this.setState({ redirect: true });
+  
+    this.props.editEmployee(updatedEmployee)
+      .then(() => {
+        // This part is changed, added this.setState: component state with new employee data.
+        // BEFORE it's redirected to true!!!
+        this.setState({
+          firstname: updatedEmployee.firstname,
+          lastname: updatedEmployee.lastname,
+          department: updatedEmployee.department,
+          redirect: true 
+        });
+      })
+      .catch((error) => {
+        // Handle error if necessary
+      });
   };
+
+
 
   componentWillUnmount() {
     this.setState({ redirect: false });
