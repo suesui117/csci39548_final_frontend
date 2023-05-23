@@ -12,7 +12,7 @@ const EmployeeView = (props) => {
 
       <h1 className="employee-name">{employee.firstname} {employee.lastname} </h1>
 
-      <h2 style={{ color: 'orange' }}className="employee-department">{employee.department}</h2>
+      <h2 style={{ color: 'orange' }} className="employee-department"> {employee.department}</h2>
 
       <div className="task-section">
         <div className="assigned-tasks">

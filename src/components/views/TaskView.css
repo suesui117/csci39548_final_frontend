@@ -1,0 +1,38 @@
+.task-view {
+    color: pink;
+  }
+  
+  .task-name {
+    font-size: 60px;
+    margin-bottom: 30px;
+  }
+  
+  .task-employee {
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+  
+  .task-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .task-heading {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .task-link {
+    color: pink;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  
+  .task-button {
+    color: pink;
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+  }
+  

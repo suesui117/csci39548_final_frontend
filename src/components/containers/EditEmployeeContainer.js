@@ -79,7 +79,7 @@ class EditEmployeeContainer extends Component {
     );
 
     return (
-      <div>
+      <div className="scrollable">
         <form style={{ textAlign: 'center' }} onSubmit={this.handleSubmit}>
           <label style={{color:'orange', fontWeight: 'bold'}}>First Name:</label>
           <input
