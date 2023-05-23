@@ -131,7 +131,7 @@ class EditTaskContainer extends Component {
         }
 
         return (
-        <div>
+        <div className="scrollable">
         <form style={{textAlign: 'center'}} onSubmit={(e) => this.handleSubmit(e)}>
             <label style= {{color:'orange', fontWeight: 'bold'}}>Description: </label>
             <input type="text" name="description" value={this.state.description || ''} placeholder={task.description} onChange ={(e) => this.handleChange(e)}/>

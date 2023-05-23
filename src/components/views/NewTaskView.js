@@ -1,3 +1,4 @@
+import './NewEmployeeView.css'; // using the same css styles as NewEmployeeView.css
 
 const NewTaskView = (props) => {
   const {handleChange, handleSubmit, error } = props;
@@ -6,33 +7,25 @@ const NewTaskView = (props) => {
     <div className="root">
       <div className="formContainer">
         <div className="formTitle">
-          <h2 style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: 'orange'}}>
+          <h2>
             New Task
           </h2>
         </div>
-        <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
-          <label style= {{color:'orange', fontWeight: 'bold'}}>description: </label>
-          <input type="text" name="description" onChange ={(e) => handleChange(e)} />
-          <br/>
-          <br/>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <label className="formLabel">Description: </label>
+          <input type="text" name="description" className="formInput" onChange ={(e) => handleChange(e)} />
 
-          <label style={{color:'orange', fontWeight: 'bold'}}>priority: </label>
-          <input type="text" name="priority" onChange={(e) => handleChange(e)} />
-          <br/>
-          <br/>
+          <label className="formLabel">Priority: </label>
+          <input type="text" name="priority" className="formInput" onChange={(e) => handleChange(e)} />
 
-          <label style={{color:'orange', fontWeight: 'bold'}}>employeeId: </label>
-          <input type="text" name="employeeId" onChange={(e) => handleChange(e)} />
-          <br/>
-          <br/>
+          <label className="formLabel">EmployeeId: </label>
+          <input type="text" name="employeeId" className="formInput" onChange={(e) => handleChange(e)} />
 
-          <button style={{color:'green', fontWeight: 'bold'}} type="submit">
+          <button style={{fontWeight: 'bold'}} type="submit" className="submitButton">
             Submit
           </button>
-          <br/>
-          <br/>
         </form>
-        {error!=="" && <p>{error}</p>}
+        {error !== "" && <p className="errorMessage">{error}</p>}
         </div>
       </div>
     

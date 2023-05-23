@@ -16,7 +16,7 @@ class AllTasksContainer extends Component {
     }
     render(){
         return(
-            <div>
+            <div className="scrollable">
                 <AllTasksView 
                   tasks={this.props.allTasks}
                   deleteTask={this.props.deleteTask}   

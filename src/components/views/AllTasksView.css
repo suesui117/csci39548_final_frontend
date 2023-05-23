@@ -1,0 +1,20 @@
+.all-tasks-container {
+    font-family: Arial, sans-serif;
+  }
+  
+  .no-tasks-message {
+    color: red;
+  }
+  
+  .add-task-button {
+    color: green;
+  }
+  
+  .task-name {
+    color: green;
+  }
+  
+  .delete-button {
+    color: red;
+  }
+  

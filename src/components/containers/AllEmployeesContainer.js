@@ -15,13 +15,12 @@ class AllEmployeesContainer extends Component {
     // const { allEmployees } = this.props;
 
     return (
-
-            <div>
-                <AllEmployeesView 
-                  allEmployees={this.props.allEmployees}
-                  deleteEmployee={this.props.deleteEmployee}   
-                />
-            </div>
+      <div className="scrollable">
+          <AllEmployeesView 
+            allEmployees={this.props.allEmployees}
+            deleteEmployee={this.props.deleteEmployee}   
+          />
+      </div>
     );
   }
 }

@@ -11,17 +11,14 @@
   }
   
   .employee-name {
-    font-family: Helvetica, sans-serif;
     color: green;
   }
   
   .employee-department {
-    font-family: Helvetica, sans-serif;
     color: purple;
   }
   
   .delete-button {
-    font-family: Arial, sans-serif;
     color: red;
   }
   
