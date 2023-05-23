@@ -43,7 +43,7 @@ const NewTaskView = (props) => {
           <div>
             <label>
               <input
-                type="checkbox"
+                type="radio"
                 name="isComplete"
                 checked={isComplete}
                 onChange={handleCheckboxChange} // when it is clicked, it switches between the checked and unchecked states. 
@@ -52,7 +52,7 @@ const NewTaskView = (props) => {
             </label>
             <label>
               <input
-                type="checkbox"
+                type="radio"
                 name="isComplete"
                 checked={!isComplete}
                 onChange={handleCheckboxChange} // when it is clicked, it switches between the checked and unchecked states. 
