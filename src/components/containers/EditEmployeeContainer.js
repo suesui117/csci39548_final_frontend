@@ -39,12 +39,25 @@ class EditEmployeeContainer extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { firstname, lastname, department } = this.state;
-    if (firstname === '') {
-      this.setState({ error: 'Error: First Name cannot be empty', textColor: 'red' });
+    // firstname cannot be empty
+    if (firstname.trim() === '') {
+      this.setState({ error: 'Error: First Name cannot be empty' });
       return;
     }
-    if (lastname === '' || department === '') {
-      this.setState({ error: 'Error: All fields must be filled', textColor: 'red' });
+
+    // firstname, lastname and department cannot be special characters
+    if (!/^[a-zA-Z]+$/.test(firstname)) {
+      this.setState({ error: 'Error: Invalid First Name' });
+      return;
+    }
+  
+    if (!/^[a-zA-Z]+$/.test(lastname)) {
+      this.setState({ error: 'Error: Invalid Last Name' });
+      return;
+    }
+  
+    if (!/^[a-zA-Z]+$/.test(department)) {
+      this.setState({ error: 'Error: Invalid Department' });
       return;
     }
   
