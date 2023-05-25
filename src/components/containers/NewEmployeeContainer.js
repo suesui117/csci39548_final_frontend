@@ -29,9 +29,11 @@ class NewEmployeeContainer extends Component {
     handleSubmit = async event => {
         event.preventDefault();
         //dont need ID because the employee has not been created yet
-        if(this.state.firstname===""){
-          this.setState({error:"firstname field is required"});
-          return;
+        const { firstname } = this.state;
+
+        if (firstname.trim().length < 1 || /[^\w]/.test(firstname)) {
+            this.setState({ error: "Invalid firstname. It must be at least 1 character long and cannot contain special characters, dots, or spaces." });
+            return;
         }
         let employee = {
             firstname: this.state.firstname,
